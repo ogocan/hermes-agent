@@ -3,7 +3,7 @@
 # =============================================================================
 model:
   default: "openai/gpt-4o"  # Ana model olarak GPT-4o kullanmasını istedik
-  provider: "auto"          # Render'daki API key'den otomatik algılayacak
+  provider: "openai"          # Render'daki API key'den otomatik algılayacak
 
 # =============================================================================
 # Context Compression (Auto-shrinks long conversations)
