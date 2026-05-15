@@ -1,25 +1,25 @@
-# =============================================================================
-# Model Configuration
-# =============================================================================
 model:
-  default: "openai/gpt-4o"  # Ana model olarak GPT-4o kullanmasını istedik
-  provider: "openai"          # Render'daki API key'den otomatik algılayacak
+  provider: "openai"
+  default: "gpt-4o"
 
-# =============================================================================
-# Context Compression (Auto-shrinks long conversations)
-# =============================================================================
-compression:
-  enabled: true
-  threshold: 0.50
-  target_ratio: 0.20
-  protect_last_n: 20
-  protect_first_n: 3
+custom_providers:
+  - name: "openai"
+    base_url: "https://api.openai.com/v1"
+    key_env: "OPENAI_API_KEY"
 
-# =============================================================================
-# Auxiliary Models (Özetleme ve Sıkıştırma Modeli)
-# =============================================================================
-# Hata veren kısmı burası tetikliyordu. OpenAI kullanması için "main" olarak ayarlıyoruz.
 auxiliary:
   compression:
-    provider: "main"
-    model: "gpt-4o-mini" # Özetlemeyi hızlı ve ucuz olan gpt-4o-mini yapacak
+    provider: "openai"
+    model: "gpt-4o-mini"
+  session_search:
+    provider: "openai"
+    model: "gpt-4o-mini"
+  vision:
+    provider: "openai"
+    model: "gpt-4o-mini"
+
+compression:
+  enabled: true
+
+telegram:
+  require_mention: false
